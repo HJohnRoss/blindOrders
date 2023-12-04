@@ -1,0 +1,62 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+#root {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media (max-width: 75em) {
+  #root {
+    font-size: 56.25%;
+  }
+}
+@media (max-width: 56.25em) {
+  #root {
+    font-size: 50%;
+  }
+}
+@media (min-width: 112.5em) {
+  #root {
+    font-size: 75%;
+  }
+}
+
+#root {
+  font-family: "Roboto", sans-serif;
+  color: #EAEAEA;
+  font-weight: 300;
+  line-height: 1.6;
+  background-color: #252A34;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+@media (max-width: 56.25em) {
+  #root {
+    padding: 0;
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+.navbar__btn {
+  color: rgb(66, 133, 244);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  background-color: #FF2E63;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  margin-right: 1rem;
+}
+.navbar__btn:hover {
+  background-color: rgba(255, 46, 99, 0.9);
+  box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.2);
+}
+
+/*# sourceMappingURL=style.css.map */
