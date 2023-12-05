@@ -10,8 +10,18 @@ const Navbar = (props) => {
 
 	return (
 		<nav id="navbar" className="navbar">
-			<Link to={`/`} className="navbar__btn">Dashboard</Link>
-			<Link to={`/order/create`} className="navbar__btn">Add Order</Link>
+			{
+				window.location.href != "http://localhost:5173/" ?
+				<Link to={`/`} className="navbar__btn">Dashboard</Link>
+				:
+				""
+			}
+			{
+				window.location.href != "http://localhost:5173/order/create" ?
+				<Link to={`/order/create`} className="navbar__btn">Add Order</Link>
+				:
+				""
+			}
 		</nav>
 	)
 }

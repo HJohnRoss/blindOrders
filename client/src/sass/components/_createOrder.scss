@@ -1,0 +1,58 @@
+.createOrder {
+	&__form {
+
+		&--label {
+			display: block;
+		}
+		
+		&--input {
+			padding: .5rem;
+			width: 20rem;
+		}
+
+		&--container {
+			display: flex;
+			gap: 1rem;
+			align-items: start;
+			margin-bottom: .5rem;
+
+			&--last {
+				display: flex;
+				gap: 1rem;
+				align-items: end;
+			}
+		}
+
+		&--btn {
+			padding: .5rem 1rem;
+			height: min-content;
+			border: none;
+			background-color: $color-primary;
+			border-radius: .7rem;
+			transition: all .3s;
+			margin-top: 1rem;
+
+			&:hover {
+				transform: translate(0, -.2rem);
+				box-shadow: 0px 8px 15px rgba(#fff, 0.2);
+				cursor: pointer;
+			}
+		}
+
+		&--btns {
+			display: flex;
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		&--products {
+			background-color: $color-primary;
+		}
+
+		&--border {
+			border: .2rem solid $color-secondary;
+			border-collapse: collapse;
+			padding: .5rem;
+		}
+	}
+}

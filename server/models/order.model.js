@@ -42,7 +42,7 @@ const OrderSchema = new mongoose.Schema({
 	{
 		type: String
 	},
-	trackingNum: 
+	trackingNum:
 	{
 		type: String
 	},
@@ -54,6 +54,14 @@ const OrderSchema = new mongoose.Schema({
 	{
 		type: Boolean,
 		default: false
+	},
+	shippedby:
+	{
+		type: String
+	},
+	deliverby:
+	{
+		type: String
 	}
 }, { timestamps: true })
 

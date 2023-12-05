@@ -1,3 +1,9 @@
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 *,
 *::after,
 *::before {
@@ -39,6 +45,52 @@
   #root {
     padding: 0;
   }
+}
+
+.createOrder__form--label {
+  display: block;
+}
+.createOrder__form--input {
+  padding: 0.5rem;
+  width: 20rem;
+}
+.createOrder__form--container {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 0.5rem;
+}
+.createOrder__form--container--last {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+.createOrder__form--btn {
+  padding: 0.5rem 1rem;
+  height: min-content;
+  border: none;
+  background-color: rgb(66, 133, 244);
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+.createOrder__form--btn:hover {
+  transform: translate(0, -0.2rem);
+  box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.createOrder__form--btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.createOrder__form--products {
+  background-color: rgb(66, 133, 244);
+}
+.createOrder__form--border {
+  border: 0.2rem solid #FF2E63;
+  border-collapse: collapse;
+  padding: 0.5rem;
 }
 
 .navbar {
