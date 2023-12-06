@@ -1,3 +1,29 @@
 .dashboard {
 
+	&__container {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+	}
+
+	&__table {
+		
+		&--head {
+			background-color: black;
+		}
+		
+		&--th {
+			padding: 1rem;
+			text-align: center;
+		}
+		
+		&--tr {
+			background-color: grey;
+			text-align: center;
+		}
+		
+		&--td {
+			padding: .5rem;
+		}
+	}
 }

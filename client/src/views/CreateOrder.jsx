@@ -1,23 +1,25 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 const CreateOrder = (props) => {
 
 	const [order, setOrder] = useState({
 		name: "",
 		orderNum: "",
+		manu: "",
 		address: "",
 		sellingChannel: "",
 		shipBy: "",
 		deliverBy: "",
-		manu: "",
 		products: [
 			{
 				name: "",
 				customization: "",
 				qty: 1
 			}
-		]
+		],
+		notes: ""
 	})
 
 	const [products, setProducts] = useState([
@@ -142,9 +144,35 @@ const CreateOrder = (props) => {
 		setOrder(order)
 	}
 
+	const handleNotes = (e) => {
+		order.notes = e.target.value;
+		setOrder(order)
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		console.log(order)
+		axios.post('http://localhost:8000/api/order/create', {
+			name: order.name,
+			orderNum: order.orderNum,
+			manu: order.manu,
+			address: order.address,
+			products: order.products,
+			sellingChannel: order.sellingChannel,
+			shipBy: order.shipBy,
+			deliverBy: order.deliverBy,
+			notes: order.notes
+		})
+			.then(res => {
+				console.log(res.data)
+			})
+			.catch(err => {
+				const errorResponse = err.response.data.errors
+				const errArr = []
+				for (const key of Object.keys(errorResponse)) {
+					errArr.push(errorResponse[key].message)
+				}
+			})
 	}
 
 	return (
@@ -230,6 +258,12 @@ const CreateOrder = (props) => {
 							}
 						</div>
 					</div>
+					<div className="createOrder__form--container">
+						<div>
+							<label className="createOrder__form--label" htmlFor="order-notes">Notes:</label>
+							<textarea onChange={e => handleNotes(e)} className="createOrder__form--input" type="text" id="order-notes" />
+						</div>
+						</div>
 					<button className="createOrder__form--btn">Create Order</button>
 				</form>
 			</div>

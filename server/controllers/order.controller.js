@@ -6,6 +6,30 @@ module.exports.findAll = (req, res) => {
     .catch(err => res.json(err))
 }
 
+module.exports.findUnshippedOrders = (req, res) => {
+  Order.find({ shipped: false })
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err))
+}
+
+module.exports.findUnshippedPhaseOrders = (req, res) => {
+  Order.find({ shipped: false, manu: "Phaseii" })
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err))
+}
+
+module.exports.findUnshippedMariakOrders = (req, res) => {
+  Order.find({ shipped: false, manu: "Mariak" })
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err))
+}
+
+module.exports.findShippedOrders = (req, res) => {
+  Order.find({ shipped: true })
+    .then(orders => res.json(orders))
+    .catch(err => res.json(err))
+}
+
 module.exports.oneOrder = (req, res) => {
   Order.findById({ _id: req.params.id })
     .then(order => res.json(order))
@@ -13,17 +37,18 @@ module.exports.oneOrder = (req, res) => {
 }
 
 module.exports.createOrder = (req, res) => {
-  const { name, orderNum, manu, address, order, sellingChannel, trackingNum, salesOrder, shipped } = req.body
+  const { name, orderNum, manu, address, products, sellingChannel, shipped, shipBy, deliverBy, notes } = req.body
   Order.create({
-    name, 
+    name,
     orderNum,
-    manu, 
-    address, 
-    order, 
-    sellingChannel, 
-    trackingNum, 
-    salesOrder,
-    shipped
+    manu,
+    address,
+    products,
+    sellingChannel,
+    shipped,
+    shipBy,
+    deliverBy,
+    notes
   })
     .then(order => res.json(order))
     .catch(err => res.status(400).json(err))

@@ -47,6 +47,26 @@
   }
 }
 
+.dashboard__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.dashboard__table--head {
+  background-color: black;
+}
+.dashboard__table--th {
+  padding: 1rem;
+  text-align: center;
+}
+.dashboard__table--tr {
+  background-color: grey;
+  text-align: center;
+}
+.dashboard__table--td {
+  padding: 0.5rem;
+}
+
 .createOrder__form--label {
   display: block;
 }

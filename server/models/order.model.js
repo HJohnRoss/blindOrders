@@ -19,23 +19,15 @@ const OrderSchema = new mongoose.Schema({
 	},
 	manu:
 	{
-		type: String,
-		required: [
-			true,
-			"Order name is required"
-		]
+		type: String
 	},
 	address:
 	{
-		type: String,
-		required: [
-			true,
-			"Address is Required"
-		]
+		type: String
 	},
-	order:
+	products:
 	{
-		type: [String],
+		type: [Object],
 		default: []
 	},
 	sellingChannel:
@@ -50,16 +42,24 @@ const OrderSchema = new mongoose.Schema({
 	{
 		type: String
 	},
+	dateSubmitted:
+	{
+		type: String
+	},
 	shipped:
 	{
 		type: Boolean,
 		default: false
 	},
-	shippedby:
+	shipBy:
 	{
 		type: String
 	},
-	deliverby:
+	deliverBy:
+	{
+		type: String
+	},
+	notes:
 	{
 		type: String
 	}
