@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from './views/Dashboard'
 import CreateOrder from './views/CreateOrder'
+import ViewOrder from './views/ViewOrder'
+import EditOrder from './views/EditOrder'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      {/* <Route path="/:id" element={} /> */}
+      <Route path="/order/:id" element={<ViewOrder />} />
+      <Route path="/order/edit/:id" element={<EditOrder/>} />
       <Route path='/order/create' element={<CreateOrder />} />
     </Routes>
   )

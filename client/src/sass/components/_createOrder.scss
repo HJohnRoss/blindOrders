@@ -8,6 +8,11 @@
 		&--input {
 			padding: .5rem;
 			width: 20rem;
+
+			&--small {
+				padding: .5rem;
+				width: 6rem;
+			}
 		}
 
 		&--container {
@@ -15,6 +20,12 @@
 			gap: 1rem;
 			align-items: start;
 			margin-bottom: .5rem;
+			justify-content: space-between;
+
+			&--measure {
+				display: flex;
+				gap: .5rem;
+			}
 
 			&--last {
 				display: flex;

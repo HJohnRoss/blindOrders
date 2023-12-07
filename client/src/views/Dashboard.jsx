@@ -8,7 +8,6 @@ import Navbar from '../components/Navbar'
 const Dashboard = (props) => {
 	const [allOrders, setAllOrders] = useState([])
 
-	const [refresh, setRefresh] = useState(false);
 
 	useEffect(() => {
 		axios.get('http://localhost:8000/api/unshipped')
@@ -17,7 +16,7 @@ const Dashboard = (props) => {
 				console.log(res.data)
 			})
 			.catch(err => console.log(err))
-	}, [refresh])
+	}, [])
 
 	const handleOrders = (e) => {
 		console.log(e.target.value)
@@ -76,7 +75,7 @@ const Dashboard = (props) => {
 								<th className="dashboard__table--th">Date Submitted</th>
 								<th className="dashboard__table--th">Ship By Date</th>
 								<th className="dashboard__table--th">Deliver By Date</th>
-								<th className="dashboard__table--th">Edit</th>
+								<th className="dashboard__table--th">View</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -91,7 +90,7 @@ const Dashboard = (props) => {
 										<td className="dashboard__table--td">{order.dateSubmitted}</td>
 										<td className="dashboard__table--td">{order.shipBy}</td>
 										<td className="dashboard__table--td">{order.deliverBy}</td>
-										<td className="dashboard__table--td"><Link to={`/order/${order._id}`}>edit</Link></td>
+										<td className="dashboard__table--td"><Link to={`/order/${order._id}`}>view</Link></td>
 									</tr>
 								)
 							}

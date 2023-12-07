@@ -15,6 +15,10 @@ const CreateOrder = (props) => {
 		products: [
 			{
 				name: "",
+				width: "",
+				length: "",
+				mountType: "Outside",
+				color: "",
 				customization: "",
 				qty: 1
 			}
@@ -29,14 +33,40 @@ const CreateOrder = (props) => {
 					<label className="createOrder__form--label" htmlFor={`order-name-0`}>Product Name:</label>
 					<input onChange={(e) => handleProduct(e, 0)} className="createOrder__form--input" type="text" id={`order-name-0`} />
 				</div>
+				<div className="createOrder__form--container--measure">
+					<div>
+						<label className="createOrder__form--label" htmlFor={`order-width-0`}>Width:</label>
+						<input onChange={(e) => handleWidth(e, 0)} className="createOrder__form--input--small" type="text" id={`order-width-0`} />
+					</div>
+					<div>
+						<label className="createOrder__form--label" htmlFor={`order-length-0`}>Length:</label>
+						<input onChange={(e) => handleLength(e, 0)} className="createOrder__form--input--small" type="text" id={`order-length-0`} />
+					</div>
+				</div>
+			</div>
+
+			<div className="createOrder__form--container">
+				<div>
+					<label htmlFor={`order-mount-0`}>Mount Type:</label>
+					<select onChange={(e) => handleMount(e, 0)} id={`order-mount-0`}>
+						<option value="Outside">Outside</option>
+						<option value="Inside">Inside</option>
+					</select>
+				</div>
+				<div>
+					<label className="createOrder__form--label" htmlFor={`order-qty-0`}>Quantity:</label>
+					<input onChange={(e) => handleQty(e, 0)} className="createOrder__form--input" type="number" id={`order-qty-${0}`} defaultValue={1} />
+				</div>
+			</div>
+			<div className="createOrder__form--container">
+				<div>
+					<label className="createOrder__form--label" htmlFor={`order-color-0`}>Color:</label>
+					<input onChange={(e) => handleColor(e, 0)} className="createOrder__form--input" type="text" id={`order-color-${0}`} />
+				</div>
 				<div>
 					<label className="createOrder__form--label" htmlFor={`order-deliver-0`}>Customizations:</label>
 					<textarea onChange={(e) => handleCustomization(e, 0)} className="createOrder__form--input" type="text" id={`order-deliver-0`} />
 				</div>
-			</div>
-			<div>
-				<label className="createOrder__form--label" htmlFor={`order-deliver-0`}>Quantity:</label>
-				<input onChange={(e) => handleQty(e, 0)} className="createOrder__form--input" type="number" id={`order-deliver-${0}`} defaultValue={1} />
 			</div>
 		</div>
 	]);
@@ -46,8 +76,13 @@ const CreateOrder = (props) => {
 		let tempOrder = [...order.products]
 		tempOrder.push(
 			{
-				name: "",
-				customization: ""
+				name: tempOrder[tempOrder.length - 1].name,
+				width: "",
+				length: "",
+				mountType: "Outside",
+				color: "",
+				customization: "",
+				qty: 1
 			}
 		)
 		order.products = tempOrder
@@ -60,16 +95,43 @@ const CreateOrder = (props) => {
 				<div className="createOrder__form--container">
 					<div>
 						<label className="createOrder__form--label" htmlFor={`order-name-${i}`}>Product Name:</label>
-						<input onChange={(e) => handleProduct(e, i)} className="createOrder__form--input" type="text" id={`order-name-${i}`}/>
+						<input onChange={(e) => handleProduct(e, i)} className="createOrder__form--input" type="text" id={`order-name-${i}`} defaultValue={order.products[i].name} />
+					</div>
+					<div className="createOrder__form--container--measure">
+						<div>
+							<label className="createOrder__form--label" htmlFor={`order-width-${i}`}>Width:</label>
+							<input onChange={(e) => handleWidth(e, i)} className="createOrder__form--input--small" type="text" id={`order-width-${i}`} />
+						</div>
+						<div>
+							<label className="createOrder__form--label" htmlFor={`order-length-${i}`}>Length:</label>
+							<input onChange={(e) => handleLength(e, i)} className="createOrder__form--input--small" type="text" id={`order-length-${i}`} />
+						</div>
+					</div>
+				</div>
+				<div className="createOrder__form--container">
+				</div>
+				<div className="createOrder__form--container">
+					<div>
+						<label htmlFor={`order-mount-${i}`}>Mount Type:</label>
+						<select onChange={(e) => handleMount(e, i)} id={`order-mount-${i}`}>
+							<option value="Outside">Outside</option>
+							<option value="Inside">Inside</option>
+						</select>
+					</div>
+					<div>
+						<label className="createOrder__form--label" htmlFor={`order-qty-${i}`}>Quantity:</label>
+						<input onChange={(e) => handleQty(e, i)} className="createOrder__form--input" type="number" id={`order-qty-${i}`} defaultValue={1} />
+					</div>
+				</div>
+				<div className="createOrder__form--container">
+					<div>
+						<label className="createOrder__form--label" htmlFor={`order-color-${i}`}>Color:</label>
+						<input onChange={(e) => handleColor(e, i)} className="createOrder__form--input" type="text" id={`order-color-${i}`} />
 					</div>
 					<div>
 						<label className="createOrder__form--label" htmlFor={`order-deliver-${i}`}>Customizations:</label>
 						<textarea onChange={(e) => handleCustomization(e, i)} className="createOrder__form--input" type="text" id={`order-deliver-${i}`} />
 					</div>
-				</div >
-				<div>
-					<label className="createOrder__form--label" htmlFor={`order-deliver-${i}`}>Quantity:</label>
-					<input onChange={(e) => handleQty(e, i)} className="createOrder__form--input" type="number" id={`order-deliver-${i}`} defaultValue={1} />
 				</div>
 			</div>
 		)
@@ -105,6 +167,34 @@ const CreateOrder = (props) => {
 	const handleQty = (e, i) => {
 		let temp = [...order.products];
 		temp[i].qty = e.target.value
+		order.products = temp;
+		setOrder(order);
+	}
+
+	const handleWidth = (e, i) => {
+		let temp = [...order.products];
+		temp[i].width = e.target.value
+		order.products = temp;
+		setOrder(order);
+	}
+
+	const handleLength = (e, i) => {
+		let temp = [...order.products];
+		temp[i].length = e.target.value
+		order.products = temp;
+		setOrder(order);
+	}
+
+	const handleMount = (e, i) => {
+		let temp = [...order.products];
+		temp[i].mountType = e.target.value
+		order.products = temp;
+		setOrder(order);
+	}
+
+	const handleColor = (e, i) => {
+		let temp = [...order.products];
+		temp[i].color = e.target.value
 		order.products = temp;
 		setOrder(order);
 	}
@@ -148,6 +238,7 @@ const CreateOrder = (props) => {
 		order.notes = e.target.value;
 		setOrder(order)
 	}
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -263,7 +354,7 @@ const CreateOrder = (props) => {
 							<label className="createOrder__form--label" htmlFor="order-notes">Notes:</label>
 							<textarea onChange={e => handleNotes(e)} className="createOrder__form--input" type="text" id="order-notes" />
 						</div>
-						</div>
+					</div>
 					<button className="createOrder__form--btn">Create Order</button>
 				</form>
 			</div>

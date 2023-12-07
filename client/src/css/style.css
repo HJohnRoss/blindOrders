@@ -74,11 +74,20 @@
   padding: 0.5rem;
   width: 20rem;
 }
+.createOrder__form--input--small {
+  padding: 0.5rem;
+  width: 6rem;
+}
 .createOrder__form--container {
   display: flex;
   gap: 1rem;
   align-items: start;
   margin-bottom: 0.5rem;
+  justify-content: space-between;
+}
+.createOrder__form--container--measure {
+  display: flex;
+  gap: 0.5rem;
 }
 .createOrder__form--container--last {
   display: flex;
